@@ -1,5 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import pandas as pd
 from pairs_backtest import fetch_prices, estimate_hedge_ratio, backtest_pair, BacktestParams
 
 st.title("📈 Pairs Trading Backtester")
