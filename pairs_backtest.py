@@ -14,6 +14,7 @@ import yfinance as yf
 import statsmodels.api as sm
 from statsmodels.tsa.stattools import coint
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 from dataclasses import dataclass
 from typing import List, Tuple, Dict, Optional
 import os
@@ -255,32 +256,51 @@ def backtest_pair(y: pd.Series,
         spread=spread
     )
 
-# ---------- Plotting ----------
+# ---------- Plotting (improved) ----------
 
 def plot_equity(result: BacktestResult, title: str, fname: Optional[str] = None):
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(12, 6))
     plt.plot(result.equity.index, result.equity.values, label="Equity (₹)")
     plt.title(title)
     plt.xlabel("Date"); plt.ylabel("Equity")
     plt.legend()
     plt.grid(True, alpha=0.3)
+
+    # Better date formatting
+    plt.gca().xaxis.set_major_locator(mdates.AutoDateLocator())
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    plt.xticks(rotation=45)
+
     if fname:
         plt.savefig(fname, bbox_inches="tight")
     plt.show()
 
 def plot_zscore(result: BacktestResult, params: BacktestParams, title: str, fname: Optional[str] = None):
-    plt.figure(figsize=(10, 4))
-    plt.plot(result.zscores.index, result.zscores.values, label="Z-score")
-    plt.axhline(params.entry_z, linestyle="--")
-    plt.axhline(-params.entry_z, linestyle="--")
-    plt.axhline(params.exit_z, linestyle=":")
-    plt.axhline(-params.exit_z, linestyle=":")
-    plt.axhline(params.stop_z, linestyle="-.")
-    plt.axhline(-params.stop_z, linestyle="-.")
+    plt.figure(figsize=(12, 5))
+    plt.plot(result.zscores.index, result.zscores.values, label="Z-score", color="blue")
+
+    # Threshold lines
+    plt.axhline(params.entry_z, linestyle="--", color="red", label="Entry")
+    plt.axhline(-params.entry_z, linestyle="--", color="red")
+    plt.axhline(params.exit_z, linestyle=":", color="green", label="Exit")
+    plt.axhline(-params.exit_z, linestyle=":", color="green")
+    plt.axhline(params.stop_z, linestyle="-.", color="black", label="Stop")
+    plt.axhline(-params.stop_z, linestyle="-.", color="black")
+
+    # Dynamic scaling for visibility
+    zmin, zmax = result.zscores.min(), result.zscores.max()
+    plt.ylim(zmin - 1, zmax + 1)
+
     plt.title(title)
     plt.xlabel("Date"); plt.ylabel("Z")
     plt.legend()
     plt.grid(True, alpha=0.3)
+
+    # Better date formatting
+    plt.gca().xaxis.set_major_locator(mdates.AutoDateLocator())
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+    plt.xticks(rotation=45)
+
     if fname:
         plt.savefig(fname, bbox_inches="tight")
     plt.show()
