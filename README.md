@@ -65,14 +65,14 @@ Then open the local URL shown in your terminal (default:
 
 ------------------------------------------------------------------------
 
-## 📊 Example Workflow
+## ❓ How to Use?
 
 1.  Enter two tickers (e.g., `NIFTYBEES.NS` and `BANKBEES.NS`).\
-2.  Select a start date.\
-3.  Click **Run Backtest**.\
+2.  Select a start date.
+3.  Click **Run Backtest**.
 4.  View performance metrics and plots:
 
--   **Equity Curve**\
+-   **Equity Curve**
 -   **Z-score chart** (spread divergence & trading signals)
 
 ------------------------------------------------------------------------
