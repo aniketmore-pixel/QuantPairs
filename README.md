@@ -71,9 +71,8 @@ Then open the local URL shown in your terminal (default:
 2.  Select a start date.
 3.  Click **Run Backtest**.
 4.  View performance metrics and plots:
-
--   **Equity Curve**
--   **Z-score chart** (spread divergence & trading signals)
+    -   **Equity Curve**
+    -   **Z-score chart** (spread divergence & trading signals)
 
 ------------------------------------------------------------------------
 
