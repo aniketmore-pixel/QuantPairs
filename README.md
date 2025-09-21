@@ -9,7 +9,8 @@ visualization.
 ------------------------------------------------------------------------
 
 ## 📸 Screenshots
->
+> <img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/2b6ad5ee-b803-4bd8-a054-4c39616768fb" />
+
 >
 >
 >
