@@ -79,10 +79,10 @@ Then open the local URL shown in your terminal (default:
 
 ## 🔮 Future Scope
 
--   Add support for **multiple pairs portfolio backtesting**.\
--   Integrate with **live data** for paper trading.\
--   Parameter optimization & walk-forward testing.\
--   Export results as **Excel/PDF reports**.\
+-   Add support for **multiple pairs portfolio backtesting**.
+-   Integrate with **live data** for paper trading.
+-   Parameter optimization & walk-forward testing.
+-   Export results as **Excel/PDF reports**.
 -   Deploy as a **cloud app (Heroku/Streamlit Cloud)**.
 
 ------------------------------------------------------------------------
